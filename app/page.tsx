@@ -1,76 +1,141 @@
+﻿"use client";
+
 import Link from "next/link";
-import Image from "next/image";
+import {
+  CalendarCheck,
+  Car,
+  Clock,
+  Compass,
+  CookingPot,
+  Fire,
+  ForkKnife,
+  Leaf,
+  MapPin,
+  Sparkle,
+  Star,
+  Wine,
+} from "phosphor-react";
 
 export default function Home() {
   return (
     <main>
       {/* Hero Section */}
-      <section className="min-h-screen hero-gradient text-white flex items-center">
-        <div className="max-w-7xl mx-auto px-6 w-full">
+      <section className="min-h-screen hero-photo text-white flex items-center relative overflow-hidden">
+        <div className="hero-overlay" />
+        <div className="flag-stripe absolute top-0 left-0 w-full h-1 opacity-80" />
+
+        <div className="max-w-7xl mx-auto px-6 w-full py-20 relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Hero Content */}
-            <div className="animate-slide-in-left">
-              <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                French & Italian Excellence
-              </h1>
-              <p className="text-xl text-yellow-50 mb-8">
-                Authentic Mediterranean cuisine crafted with passion, tradition, and the finest imported ingredients from France and Italy.
-              </p>
-              <div className="flex gap-4">
-                <Link href="/reservations" className="btn-primary">
-                  👉 Reserve a Table
-                </Link>
-                <Link href="/menu" className="btn-secondary text-yellow-50 border-yellow-50">
-                  View Menu
-                </Link>
-              </div>
-            </div>
+            <div className="animate-slide-in-left space-y-6">
+              {/* removed: "An Italian–French Maison" */}
 
-            {/* Hero Image */}
-            <div className="hidden md:block animate-slide-in-right">
-              <div className="bg-gradient-to-br from-red-800 to-red-900 rounded-lg h-96 flex items-center justify-center shadow-2xl">
-                <div className="text-6xl animate-float">🍽️🍲🥘</div>
+              <h1 className="text-5xl md:text-6xl font-semibold leading-tight">
+                Seasonal dining, shaped with restraint
+              </h1>
+
+              <p className="text-lg text-white/70 max-w-xl">
+                A calm room for unhurried evenings. The menu moves with the season,
+                grounded in classic technique and guided by a considered wine list.
+              </p>
+
+              <div className="flex flex-wrap gap-4">
+                <Link href="/reservations" className="btn-primary btn-cta inline-flex items-center gap-2">
+                  <CalendarCheck size={18} weight="bold" />
+                  Book a Table
+                </Link>
+
+                <Link
+                  href="/menu"
+                  className="btn-secondary inline-flex items-center gap-2 text-white border-white/60"
+                >
+                  <ForkKnife size={18} weight="bold" />
+                  View the Menu
+                </Link>
               </div>
+
+              {/* removed: From Lyon to Florence / Chef’s Counter Experience / Cellar Selection */}
             </div>
           </div>
         </div>
       </section>
 
       {/* Quick Info Bar */}
-      <section className="bg-yellow-50 py-8 border-b-2 border-red-700">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-8 text-center">
-            <div className="animate-scale-in">
-              <p className="text-2xl mb-2">⭐</p>
-              <p className="text-lg font-semibold text-red-900">4.8 Google Rating</p>
-            </div>
-            <div className="animate-scale-in" style={{animationDelay: '0.1s'}}>
-              <p className="text-2xl mb-2">📍</p>
-              <p className="text-lg font-semibold text-red-900">Downtown City Center</p>
-            </div>
-            <div className="animate-scale-in" style={{animationDelay: '0.2s'}}>
-              <p className="text-2xl mb-2">🕒</p>
-              <p className="text-lg font-semibold text-red-900">Open Today: 5:00 PM – 10:30 PM</p>
-            </div>
-          </div>
+{/* Quick Info Bar */}
+<section className="bg-white py-10 border-b border-black/10">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="grid md:grid-cols-3 gap-8 text-center">
+      {[
+        { icon: Star, label: "4.9", isRating: true },
+        { icon: MapPin, label: "Queens, New York" },
+        { icon: Clock, label: "Open tonight · 5:00 PM – 10:30 PM" },
+      ].map((item, i) => (
+        <div
+          key={item.label}
+          className="animate-scale-in"
+          style={{ animationDelay: `${i * 0.1}s` }}
+        >
+          {/* ICON BADGE: make rating gold */}
+<span
+  className={`icon-badge mb-3 ${
+    item.isRating ? "bg-[#FBBC04]/15" : ""
+  }`}
+>
+  <item.icon
+    size={20}
+    weight="fill"
+    className={item.isRating ? "text-[#FBBC04]" : ""}
+  />
+</span>
+
+
+          <p className="text-lg font-semibold text-neutral-900">{item.label}</p>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* Signature Dishes */}
-      <section className="py-20 bg-gradient-to-br from-yellow-50 to-yellow-100">
+      <section className="py-20 bg-neutral-50">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="section-title">Chef's Favorites</h2>
+          <h2 className="section-title">From the Kitchen</h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { dish: "Coq au Vin", desc: "Tender chicken in Burgundy wine sauce", emoji: "🍗" },
-              { dish: "Risotto ai Funghi", desc: "Creamy Italian arborio with porcini", emoji: "🍚" },
-              { dish: "Pappardelle al Ragù", desc: "Handmade pasta with slow-cooked sauce", emoji: "🍝" },
-              { dish: "Crème Brûlée", desc: "Classic French custard with caramelized sugar", emoji: "✨" },
+              {
+                dish: "Coq au Vin",
+                desc: "Chicken, Burgundy wine, slow aromatics",
+                icon: Wine,
+              },
+              {
+                dish: "Wild Mushroom Risotto",
+                desc: "Porcini, aged parmesan, restrained truffle",
+                icon: Fire,
+              },
+              {
+                dish: "Pappardelle with Ragù",
+                desc: "Long-simmered beef, fresh pasta, basil finish",
+                icon: ForkKnife,
+              },
+              {
+                dish: "Crème Brûlée",
+                desc: "Vanilla custard, caramelised sugar",
+                icon: Sparkle,
+              },
             ].map((item, i) => (
-              <div key={i} className="card-elegant p-6 transform hover:rotate-1 animate-fade-in-up" style={{animationDelay: `${i * 0.1}s`}}>
-                <p className="text-4xl mb-4">{item.emoji}</p>
-                <h3 className="text-lg font-bold mb-2 text-red-900">{item.dish}</h3>
+              <div
+                key={item.dish}
+                className="card-elegant p-6 transform hover:rotate-1 animate-fade-in-up"
+                style={{ animationDelay: `${i * 0.1}s` }}
+              >
+                <span className="icon-badge mb-4">
+                  <item.icon size={20} weight="bold" />
+                </span>
+                <h3 className="text-lg font-bold mb-2" style={{ color: "var(--color-ink)" }}>
+                  {item.dish}
+                </h3>
                 <p className="text-gray-700">{item.desc}</p>
               </div>
             ))}
@@ -78,74 +143,109 @@ export default function Home() {
 
           <div className="text-center mt-12">
             <Link href="/menu" className="btn-primary">
-              Explore Full Menu
+              View Full Menu
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Why Guests Love Us */}
+      {/* What Sets Us Apart */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="section-title">Why Guests Love Us</h2>
+          <h2 className="section-title">What Sets Us Apart</h2>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Features */}
             <div className="space-y-8">
               {[
-                { icon: "🧀", title: "Imported from France & Italy" },
-                { icon: "👨‍🍳", title: "Chef-Curated Recipes" },
-                { icon: "🍷", title: "Premium Wine Selection" },
+                { icon: Leaf, title: "Sourcing with intention" },
+                { icon: CookingPot, title: "Technique-led cooking" },
+                { icon: Wine, title: "A cellar built for pairing" },
               ].map((item, i) => (
-                <div key={i} className="flex items-start gap-6">
-                  <p className="text-4xl">{item.icon}</p>
+                <div key={item.title} className="flex items-start gap-6">
+                  <span className="icon-badge">
+                    <item.icon size={22} weight="bold" />
+                  </span>
                   <div>
                     <h3 className="text-xl font-bold mb-2">{item.title}</h3>
                     <p className="text-gray-600">
-                      {i === 0 && "Premium ingredients imported directly from the vineyards and farms of France and Italy."}
-                      {i === 1 && "Traditional recipes from Lyon, Tuscany, and the Côte d'Azur prepared with meticulous care."}
-                      {i === 2 && "Curated selection of French wines, Italian wines, and premium cocktails to complement your meal."}
+                      {i === 0 &&
+                        "Ingredients selected from trusted producers, with a focus on seasonality and provenance."}
+                      {i === 1 &&
+                        "Classical foundations, modern restraint—each dish built for clarity and balance."}
+                      {i === 2 &&
+                        "A considered list that supports the menu, with pairings available by course."}
                     </p>
                   </div>
                 </div>
               ))}
             </div>
 
-      {/* Atmosphere Image */}
-            <div className="bg-gradient-to-br from-red-100 to-red-200 rounded-lg h-96 flex items-center justify-center shadow-xl">
-              <div className="text-6xl animate-pulse-subtle">🏢🍷😌</div>
+            {/* Atmosphere */}
+            <div className="bg-gradient-to-br from-white to-neutral-100 rounded-3xl h-96 flex items-center justify-center shadow-xl relative overflow-hidden">
+              <div className="absolute top-6 left-6 tag-pill-light">Evening service</div>
+              <div className="absolute bottom-6 right-6 tag-pill-light">Selected piano nights</div>
+
+              <div className="glass-panel rounded-2xl p-8 text-center space-y-4">
+                <span className="icon-badge mx-auto">
+                  <Sparkle size={24} weight="fill" />
+                </span>
+                <p className="text-2xl font-semibold text-neutral-900">
+                  A room designed to slow time
+                </p>
+                <p className="text-sm text-neutral-600 max-w-xs">
+                  Soft light, quiet detail, and a measured pace—made for conversation.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Location Preview */}
-      <section className="py-20 bg-gradient-to-br from-red-50 to-red-100">
+      <section className="py-20 bg-gradient-to-br from-neutral-50 to-neutral-100">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Map Placeholder */}
-            <div className="bg-gradient-to-br from-red-300 to-red-400 rounded-lg h-96 flex items-center justify-center shadow-xl">
-              <p className="text-gray-700 text-lg font-semibold">📍 Map Would Load Here</p>
+            <div className="bg-gradient-to-br from-black to-neutral-800 rounded-3xl h-96 flex items-center justify-center shadow-xl text-white">
+              <div className="text-center space-y-4">
+                <span className="icon-badge mx-auto text-white bg-white/10">
+                  <Compass size={22} weight="bold" />
+                </span>
+                <p className="text-lg font-semibold">Map overview</p>
+                <p className="text-sm text-white/70">Queens, New York</p>
+              </div>
             </div>
 
-            {/* Location Info */}
             <div className="animate-slide-in-right">
-              <h2 className="text-4xl font-bold mb-6 text-red-900">Find Us Easily</h2>
+              <h2 className="text-4xl font-semibold mb-6 text-neutral-900">Getting Here</h2>
+
               <div className="space-y-4">
                 <div>
-                  <p className="font-bold text-lg mb-2 text-red-700">📍 Address</p>
-                  <p className="text-gray-700">123 Via Principale, Downtown City</p>
+                  <p className="font-bold text-lg mb-2 flex items-center gap-2 text-neutral-900">
+                    <MapPin size={18} weight="bold" />
+                    Address
+                  </p>
+                  <p className="text-gray-700">90-15 Queens Blvd, Elmhurst, NY 11373, United States</p>
                 </div>
+
                 <div>
-                  <p className="font-bold text-lg mb-2 text-red-700">🅿️ Parking</p>
-                  <p className="text-gray-700">Complimentary valet parking available</p>
+                  <p className="font-bold text-lg mb-2 flex items-center gap-2 text-neutral-900">
+                    <Car size={18} weight="bold" />
+                    Parking
+                  </p>
+                  <p className="text-gray-700">Valet available</p>
                 </div>
+
                 <div>
-                  <p className="font-bold text-lg mb-2 text-red-700">🚕 Transportation</p>
-                  <p className="text-gray-700">Easily accessible by car or public transit</p>
+                  <p className="font-bold text-lg mb-2 flex items-center gap-2 text-neutral-900">
+                    <Compass size={18} weight="bold" />
+                    Access
+                  </p>
+                  <p className="text-gray-700">Convenient by car and public transport</p>
                 </div>
+
                 <Link href="/contact" className="btn-primary inline-block mt-6">
-                  👉 Get Directions
+                  View Directions
                 </Link>
               </div>
             </div>
@@ -154,11 +254,18 @@ export default function Home() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 bg-gradient-to-r from-amber-900 to-amber-800 text-white text-center">
-        <h2 className="text-4xl font-bold mb-6">Ready for a great meal?</h2>
-        <p className="text-xl text-amber-100 mb-8">Join us for an unforgettable dining experience</p>
-        <Link href="/reservations" className="btn-primary">
-          👉 Reserve Your Table Today
+      <section className="py-20 bg-gradient-to-r from-black to-neutral-900 text-white text-center">
+        <h2 className="text-4xl font-semibold mb-6">Reservations recommended</h2>
+        <p className="text-xl text-white/70 mb-8">
+          Limited seating each evening. Book ahead for your preferred time.
+        </p>
+
+        <Link
+          href="/reservations"
+          className="btn-primary btn-cta inline-flex items-center gap-2"
+        >
+          <CalendarCheck size={18} weight="bold" />
+          Reserve a Table
         </Link>
       </section>
     </main>

@@ -1,7 +1,15 @@
-'use client';
+﻿'use client';
 
 import { useState } from "react";
 import Link from "next/link";
+import { Check, CheckCircle, Envelope, Phone, WhatsappLogo } from "phosphor-react";
+
+const PROMISES = [
+  "Confirmation within 1 hour",
+  "Special occasions handled with care",
+  "Flexible cancellation policy",
+  "Dietary requirements accommodated",
+];
 
 export default function Reservations() {
   const [formData, setFormData] = useState({
@@ -34,10 +42,10 @@ export default function Reservations() {
   return (
     <main>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-amber-900 to-amber-800 text-white py-16">
+      <section className="bg-black text-white py-16">
         <div className="max-w-7xl mx-auto px-6">
           <h1 className="text-5xl font-bold mb-4">Make a Reservation</h1>
-          <p className="text-xl text-amber-100">We recommend reservations to ensure the best experience</p>
+          <p className="text-xl text-white/70">We recommend reservations to ensure the best experience</p>
         </div>
       </section>
 
@@ -46,9 +54,12 @@ export default function Reservations() {
         <div className="max-w-2xl mx-auto px-6">
           {submitted ? (
             <div className="bg-green-50 border-2 border-green-500 rounded-lg p-8 text-center">
-              <p className="text-2xl font-bold text-green-700 mb-2">✓ Reservation Received!</p>
+              <div className="flex items-center justify-center gap-3 text-green-700 mb-2">
+                <CheckCircle size={24} weight="fill" />
+                <p className="text-2xl font-bold">Reservation Received!</p>
+              </div>
               <p className="text-gray-700">
-                Thank you! We'll confirm your reservation shortly via phone or email.
+                Thank you! We will confirm your reservation shortly via phone or email.
               </p>
             </div>
           ) : (
@@ -63,7 +74,7 @@ export default function Reservations() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-amber-700"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black"
                     placeholder="John Doe"
                   />
                 </div>
@@ -77,7 +88,7 @@ export default function Reservations() {
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-amber-700"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black"
                     placeholder="(123) 456-7890"
                   />
                 </div>
@@ -91,7 +102,7 @@ export default function Reservations() {
                     value={formData.date}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-amber-700"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black"
                   />
                 </div>
 
@@ -104,7 +115,7 @@ export default function Reservations() {
                     value={formData.time}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-amber-700"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black"
                   />
                 </div>
 
@@ -115,7 +126,7 @@ export default function Reservations() {
                     name="guests"
                     value={formData.guests}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-amber-700"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black"
                   >
                     {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
                       <option key={num} value={num}>
@@ -133,14 +144,14 @@ export default function Reservations() {
                   name="requests"
                   value={formData.requests}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-amber-700 h-24"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black h-24"
                   placeholder="Allergies, dietary needs, occasion, etc."
                 ></textarea>
               </div>
 
               {/* Submit Button */}
               <button type="submit" className="btn-primary w-full text-lg">
-                👉 Reserve Now
+                Reserve Now
               </button>
             </form>
           )}
@@ -152,9 +163,10 @@ export default function Reservations() {
               href="https://wa.me/1234567890?text=Hi,%20I%20would%20like%20to%20reserve%20a%20table%20at%20Culinary%20Haven"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-8 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition"
+              className="inline-flex items-center gap-3 px-8 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition"
             >
-              💬 Tap to Reserve via WhatsApp
+              <WhatsappLogo size={20} weight="fill" />
+              Tap to Reserve via WhatsApp
             </a>
           </div>
         </div>
@@ -167,25 +179,33 @@ export default function Reservations() {
 
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white p-6 rounded-lg">
-              <h3 className="text-xl font-bold mb-4">📞 Call Us</h3>
+              <h3 className="text-xl font-bold mb-4 flex items-center gap-3">
+                <Phone size={20} weight="bold" />
+                Call Us
+              </h3>
               <p className="text-gray-700">(123) 456-7890</p>
-              <p className="text-gray-600 text-sm mt-2">Mon–Fri: 11:00 AM – 10:30 PM</p>
+              <p className="text-gray-600 text-sm mt-2">Mon-Fri: 11:00 AM - 10:30 PM</p>
             </div>
 
             <div className="bg-white p-6 rounded-lg">
-              <h3 className="text-xl font-bold mb-4">📧 Email Us</h3>
+              <h3 className="text-xl font-bold mb-4 flex items-center gap-3">
+                <Envelope size={20} weight="bold" />
+                Email Us
+              </h3>
               <p className="text-gray-700">hello@culinaryhaven.com</p>
               <p className="text-gray-600 text-sm mt-2">Response within 2 hours</p>
             </div>
           </div>
 
           <div className="mt-8 bg-white p-6 rounded-lg">
-            <h3 className="text-xl font-bold mb-4">✓ Our Promise</h3>
+            <h3 className="text-xl font-bold mb-4">Our Promise</h3>
             <ul className="space-y-3 text-gray-700">
-              <li>✓ Confirmation within 1 hour</li>
-              <li>✓ Special occasions handled with care</li>
-              <li>✓ Flexible cancellation policy</li>
-              <li>✓ Dietary requirements accommodated</li>
+              {PROMISES.map((promise) => (
+                <li key={promise} className="flex items-center gap-3">
+                  <Check size={18} weight="bold" className="text-neutral-900" />
+                  {promise}
+                </li>
+              ))}
             </ul>
           </div>
         </div>

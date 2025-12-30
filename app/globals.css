@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700&family=Manrope:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -15,22 +15,28 @@ html {
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  @apply bg-white text-gray-900;
+  font-family: 'Manrope', sans-serif;
+  color: var(--color-ink);
+  background-color: var(--color-paper);
+  background-image:
+    linear-gradient(0deg, rgba(10, 10, 10, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10, 10, 10, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Bodoni Moda', serif;
+  letter-spacing: 0.04em;
 }
 
 /* Italian & French Color Palette */
 :root {
-  --color-burgundy: #6B1C23;
-  --color-deep-red: #8B2E3B;
-  --color-gold: #D4AF37;
-  --color-cream: #FFF8E7;
-  --color-sage: #5A7C59;
-  --color-ivory: #F5F0E8;
+  --color-ink: #0a0a0a;
+  --color-paper: #ffffff;
+  --color-mist: #f3f3f3;
+  --color-line: #1a1a1a;
+  --color-muted: #5a5a5a;
 }
 
 /* Smooth Animations */
@@ -123,30 +129,57 @@ h1, h2, h3, h4, h5, h6 {
 @layer components {
   /* Italian & French themed buttons with gold accents */
   .btn-primary {
-    @apply px-8 py-3 bg-gradient-to-r from-red-700 to-red-800 text-white rounded-lg font-semibold 
-           hover:from-red-800 hover:to-red-900 transition-all duration-300 shadow-lg 
-           hover:shadow-xl hover:scale-105 transform;
-    box-shadow: 0 4px 15px rgba(139, 46, 59, 0.3);
+    @apply px-8 py-3 rounded-full font-semibold text-white transition-all duration-300
+           hover:scale-[1.02];
+    background: var(--color-ink);
+    box-shadow: 0 12px 24px rgba(10, 10, 10, 0.2);
   }
 
   .btn-primary:hover {
-    box-shadow: 0 8px 25px rgba(139, 46, 59, 0.4);
+    box-shadow: 0 16px 28px rgba(10, 10, 10, 0.3);
+  }
+
+  .btn-cta {
+    background: linear-gradient(120deg, #d9a441, #c4771c);
+    color: #101010;
+  }
+
+  .btn-cta:hover {
+    box-shadow: none;
+  }
+
+  .btn-reserve {
+    background: transparent;
+    color: #111111;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    box-shadow: none;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .btn-reserve:hover {
+    background: rgba(0, 0, 0, 0.04);
+    box-shadow: none;
   }
 
   .btn-secondary {
-    @apply px-8 py-3 border-2 border-red-700 text-red-700 rounded-lg font-semibold 
-           hover:bg-red-50 transition-all duration-300 hover:scale-105 transform;
+    @apply px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-[1.02];
+    border: 1.5px solid var(--color-line);
+    color: var(--color-ink);
+    background: transparent;
   }
 
   .section-title {
-    @apply text-4xl font-bold text-center mb-12 text-red-900;
+    @apply text-4xl md:text-5xl font-semibold text-center mb-12;
+    color: var(--color-ink);
   }
 
   /* Card animations and styling */
   .card-elegant {
-    @apply bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 
-           hover:scale-105 hover:-translate-y-1;
-    border: 1px solid rgba(212, 175, 55, 0.1);
+    @apply rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300
+           hover:scale-[1.01] hover:-translate-y-1;
+    background: var(--color-paper);
+    border: 1px solid var(--color-line);
   }
 
   /* Menu item styling */
@@ -156,47 +189,288 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .menu-item h3 {
-    @apply text-red-900 hover:text-red-700 transition-colors;
+    @apply transition-colors;
+    color: var(--color-ink);
   }
 
   .menu-price {
     @apply font-bold text-xl;
-    color: #D4AF37;
+    color: var(--color-ink);
   }
 
   /* Navigation link styling */
   .nav-link {
-    @apply relative text-gray-800 hover:text-red-700 transition-colors
-           after:content-[''] after:absolute after:bottom-0 after:left-0 
-           after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-red-700 after:to-red-500
+    @apply relative text-gray-800 transition-colors
+           after:content-[''] after:absolute after:bottom-0 after:left-0
+           after:w-0 after:h-0.5 after:bg-black
            after:transition-all after:duration-300 hover:after:w-full;
   }
 
   /* Icon styling */
   .icon-gold {
-    color: #D4AF37;
+    color: var(--color-ink);
   }
 
   .icon-burgundy {
-    color: #6B1C23;
+    color: var(--color-ink);
   }
 
   /* Hero section gradient */
   .hero-gradient {
-    @apply bg-gradient-to-br from-red-900 via-red-800 to-red-700;
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
+    background: linear-gradient(135deg, #0a0a0a, #1b1b1b);
   }
 
-  @keyframes gradient {
-    0% {
-      background-position: 0% 50%;
+  .hero-photo {
+    background-image: url('/luxurious-hotel-bar-lounge.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.5));
+  }
+
+  .section-kicker {
+    @apply uppercase tracking-[0.35em] text-xs font-semibold;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .flag-stripe {
+    background: linear-gradient(90deg, #0a0a0a, #ffffff, #0a0a0a);
+  }
+
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(10px);
+  }
+
+  .tag-pill {
+    @apply rounded-full px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em];
+    background: rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+  }
+
+  .tag-pill-light {
+    @apply rounded-full px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em];
+    background: rgba(10, 10, 10, 0.08);
+    color: var(--color-ink);
+  }
+
+  .icon-badge {
+    @apply inline-flex items-center justify-center rounded-full;
+    width: 44px;
+    height: 44px;
+    background: rgba(10, 10, 10, 0.08);
+    color: var(--color-ink);
+  }
+
+  .menu-toggle {
+    @apply inline-flex items-center justify-center rounded-full border border-black/20 px-4 py-3 transition;
+    background: transparent;
+  }
+
+  .menu-toggle-modern {
+    border-radius: 999px;
+    padding: 10px 14px;
+    border: none;
+    background: transparent;
+  }
+
+  .menu-toggle-modern:hover {
+    background: transparent;
+  }
+
+  .menu-toggle-icon {
+    display: inline-block;
+    width: 22px;
+    height: 2px;
+    background: var(--color-ink);
+    position: relative;
+  }
+
+  .menu-toggle-icon::before,
+  .menu-toggle-icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 22px;
+    height: 2px;
+    background: var(--color-ink);
+  }
+
+  .menu-toggle-icon::before {
+    top: -7px;
+  }
+
+  .menu-toggle-icon::after {
+    top: 7px;
+  }
+
+  .menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 60;
+    color: #ffffff;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    animation: overlay-fade 300ms ease forwards;
+  }
+
+  .menu-panel {
+    position: relative;
+    width: 420px;
+    max-width: 90vw;
+    background: linear-gradient(140deg, rgba(15, 15, 15, 0.98), rgba(30, 30, 30, 0.98));
+    box-shadow: 12px 0 40px rgba(0, 0, 0, 0.4);
+    animation: panel-slide 360ms cubic-bezier(0.2, 0.65, 0.2, 1) forwards;
+  }
+
+  .menu-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(0deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 64px 64px;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .menu-overlay-inner {
+    position: relative;
+    padding: 32px 24px 64px;
+  }
+
+  .menu-overlay-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 16px;
+  }
+
+  .menu-overlay-title {
+    font-size: 14px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .menu-close {
+    @apply inline-flex items-center justify-center rounded-full border border-white/40 px-4 py-2 text-sm;
+    background: transparent;
+    color: #ffffff;
+  }
+
+  .menu-close-icon {
+    font-size: 18px;
+    letter-spacing: 0.1em;
+  }
+
+  .menu-overlay-grid {
+    display: grid;
+    gap: 48px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    margin-top: 40px;
+  }
+
+  .menu-section-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 16px;
+  }
+
+  .menu-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .menu-link {
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #ffffff;
+    transition: color 200ms ease, transform 200ms ease;
+  }
+
+  .menu-link:hover {
+    color: rgba(255, 255, 255, 0.7);
+    transform: translateX(4px);
+  }
+
+  .menu-meta {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+  }
+
+  .masonry {
+    column-gap: 24px;
+  }
+
+  .masonry-item {
+    break-inside: avoid;
+    margin-bottom: 24px;
+  }
+
+  .gallery-tile {
+    @apply relative overflow-hidden rounded-2xl;
+    min-height: 260px;
+  }
+
+  .gallery-tile img {
+    @apply absolute inset-0 w-full h-full object-cover;
+  }
+
+  .gallery-overlay {
+    @apply absolute inset-0;
+    background: linear-gradient(120deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.15));
+  }
+
+  .gallery-title {
+    @apply relative z-10 text-white font-semibold uppercase tracking-[0.25em];
+    font-size: 24px;
+  }
+
+  .gallery-subtitle {
+    @apply relative z-10 text-white/70 text-sm uppercase tracking-[0.4em];
+  }
+
+  @keyframes overlay-fade {
+    from {
+      opacity: 0;
     }
-    50% {
-      background-position: 100% 50%;
+    to {
+      opacity: 1;
     }
-    100% {
-      background-position: 0% 50%;
+  }
+
+  @keyframes panel-slide {
+    from {
+      opacity: 0;
+      transform: translateX(-24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation: none !important;
+      transition: none !important;
     }
   }
 }
