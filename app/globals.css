@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  @apply bg-white text-gray-900;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Italian & French Color Palette */
+:root {
+  --color-burgundy: #6B1C23;
+  --color-deep-red: #8B2E3B;
+  --color-gold: #D4AF37;
+  --color-cream: #FFF8E7;
+  --color-sage: #5A7C59;
+  --color-ivory: #F5F0E8;
+}
+
+/* Smooth Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out;
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@layer components {
+  /* Italian & French themed buttons with gold accents */
+  .btn-primary {
+    @apply px-8 py-3 bg-gradient-to-r from-red-700 to-red-800 text-white rounded-lg font-semibold 
+           hover:from-red-800 hover:to-red-900 transition-all duration-300 shadow-lg 
+           hover:shadow-xl hover:scale-105 transform;
+    box-shadow: 0 4px 15px rgba(139, 46, 59, 0.3);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 8px 25px rgba(139, 46, 59, 0.4);
+  }
+
+  .btn-secondary {
+    @apply px-8 py-3 border-2 border-red-700 text-red-700 rounded-lg font-semibold 
+           hover:bg-red-50 transition-all duration-300 hover:scale-105 transform;
+  }
+
+  .section-title {
+    @apply text-4xl font-bold text-center mb-12 text-red-900;
+  }
+
+  /* Card animations and styling */
+  .card-elegant {
+    @apply bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 
+           hover:scale-105 hover:-translate-y-1;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+  }
+
+  /* Menu item styling */
+  .menu-item {
+    @apply flex justify-between items-start hover:translate-x-2 transition-transform duration-300 
+           pb-4 border-b border-gray-100;
+  }
+
+  .menu-item h3 {
+    @apply text-red-900 hover:text-red-700 transition-colors;
+  }
+
+  .menu-price {
+    @apply font-bold text-xl;
+    color: #D4AF37;
+  }
+
+  /* Navigation link styling */
+  .nav-link {
+    @apply relative text-gray-800 hover:text-red-700 transition-colors
+           after:content-[''] after:absolute after:bottom-0 after:left-0 
+           after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-red-700 after:to-red-500
+           after:transition-all after:duration-300 hover:after:w-full;
+  }
+
+  /* Icon styling */
+  .icon-gold {
+    color: #D4AF37;
+  }
+
+  .icon-burgundy {
+    color: #6B1C23;
+  }
+
+  /* Hero section gradient */
+  .hero-gradient {
+    @apply bg-gradient-to-br from-red-900 via-red-800 to-red-700;
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+}
