@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { CalendarCheck, Car, Clock, Compass, MapPin, Star } from "phosphor-react";
+import { CalendarCheck, Clock, Compass, MapPin, Star } from "phosphor-react";
 import TrackedLink from "@/components/TrackedLink";
 
 export default function Home() {
