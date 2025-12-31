@@ -99,18 +99,17 @@ export default function Gallery() {
                 </h2>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {gallery.items.map((item, i) => (
+                  {gallery.items.map((item) => (
                     <div
                       key={item.name}
-                      className="card-elegant relative h-56 overflow-hidden animate-fade-in-up group"
-                      style={{ animationDelay: `${i * 0.1}s` }}
+                      className="card-elegant relative h-56 overflow-hidden group"
                     >
                       <img
                         src={item.image}
                         alt={item.name}
                         className="w-full h-full object-cover"
                       />
-                      <div className="text-center absolute inset-0 bg-black/40 text-white flex flex-col items-center justify-center gap-3 opacity-0 transition group-hover:opacity-100">
+                      <div className="text-center absolute inset-0 bg-black/30 text-white flex flex-col items-center justify-center gap-3 opacity-0 transition group-hover:opacity-100">
                         <span className="icon-badge bg-white/10 text-white">
                           <ImageSquare size={22} weight="bold" />
                         </span>

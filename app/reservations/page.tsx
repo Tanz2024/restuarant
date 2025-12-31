@@ -1,7 +1,6 @@
 ﻿'use client';
 
 import { useState } from "react";
-import Link from "next/link";
 import { Check, CheckCircle, Envelope, Phone, WhatsappLogo } from "phosphor-react";
 
 const PROMISES = [
@@ -63,7 +62,7 @@ export default function Reservations() {
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="bg-gray-50 p-8 rounded-lg shadow-lg">
+            <form onSubmit={handleSubmit} className="bg-gray-50 p-8 rounded-lg border border-black/10">
               <div className="grid md:grid-cols-2 gap-6 mb-6">
                 {/* Name */}
                 <div>
@@ -75,7 +74,7 @@ export default function Reservations() {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-black"
-                    placeholder="John Doe"
+                    placeholder="Peter Kahm"
                   />
                 </div>
 
@@ -157,7 +156,7 @@ export default function Reservations() {
           )}
 
           {/* Alternative - WhatsApp */}
-          <div className="mt-12 p-8 bg-green-50 rounded-lg text-center">
+          <div className="mt-12 p-8 rounded-lg text-center">
             <p className="text-lg font-semibold mb-4">Prefer WhatsApp?</p>
             <a
               href="https://wa.me/1234567890?text=Hi,%20I%20would%20like%20to%20reserve%20a%20table%20at%20Culinary%20Haven"

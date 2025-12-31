@@ -65,7 +65,7 @@ export default function Events() {
           </p>
         </div>
         <div className="w-full">
-          <div className="overflow-hidden shadow-2xl rounded-none md:rounded-[36px] md:mx-6">
+          <div className="overflow-hidden rounded-none md:rounded-[36px] md:mx-6 border border-black/10">
             <img
               src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=80"
               alt="Event dining setup"
@@ -130,11 +130,10 @@ export default function Events() {
                 image:
                   "https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=900&q=80",
               },
-            ].map((item, i) => (
+            ].map((item) => (
               <div
                 key={item.title}
-                className="bg-white border border-black/20 rounded-3xl overflow-hidden shadow-2xl animate-fade-in-up"
-                style={{ animationDelay: `${i * 0.1}s` }}
+                className="bg-white border border-black/10 rounded-3xl overflow-hidden"
               >
                 <div className="h-56 overflow-hidden">
                   <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
@@ -188,7 +187,7 @@ export default function Events() {
                 items: ["Chef's selections", "Customized multi-course", "Special desserts", "Premium bar service"],
               },
             ].map((pkg) => (
-              <div key={pkg.name} className="bg-white rounded-lg p-8 shadow-md border-t-4 border-black">
+              <div key={pkg.name} className="bg-white rounded-lg p-8 border border-black/10">
                 <h3 className="text-2xl font-bold mb-2">{pkg.name}</h3>
                 <p className="text-lg text-neutral-900 font-semibold mb-6">{pkg.price}</p>
                 <ul className="space-y-3 text-gray-700">
@@ -223,7 +222,7 @@ export default function Events() {
               Request a Quote
             </button>
           ) : (
-            <form onSubmit={handleQuoteSubmit} className="bg-gray-50 p-8 rounded-lg shadow-lg space-y-6">
+            <form onSubmit={handleQuoteSubmit} className="bg-gray-50 p-8 rounded-lg border border-black/10 space-y-6">
               {quoteSubmitted ? (
                 <div className="bg-green-50 border-2 border-green-500 rounded-lg p-8 text-center">
                   <div className="flex items-center justify-center gap-3 text-green-700 mb-2">
@@ -307,7 +306,7 @@ export default function Events() {
           <h2 className="text-4xl font-bold mb-8">Questions? Let's Talk</h2>
 
           <div className="grid md:grid-cols-2 gap-8 mb-8">
-            <div className="bg-white border border-black/10 rounded-2xl p-8 text-left shadow-lg">
+            <div className="bg-white border border-black/10 rounded-2xl p-8 text-left">
               <p className="text-xs uppercase tracking-[0.35em] text-neutral-500 mb-4">Restaurant Events</p>
               <p className="text-2xl font-semibold mb-3 flex items-center gap-3">
                 <Phone size={22} weight="bold" />
@@ -318,7 +317,7 @@ export default function Events() {
               </a>
               <p className="text-sm text-gray-600 mt-3">private dining, birthdays, weddings</p>
             </div>
-            <div className="bg-white border border-black/10 rounded-2xl p-8 text-left shadow-lg">
+            <div className="bg-white border border-black/10 rounded-2xl p-8 text-left">
               <p className="text-xs uppercase tracking-[0.35em] text-neutral-500 mb-4">Catering</p>
               <p className="text-2xl font-semibold mb-3 flex items-center gap-3">
                 <Envelope size={22} weight="bold" />

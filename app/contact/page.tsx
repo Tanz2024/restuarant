@@ -1,6 +1,5 @@
 ﻿"use client";
 
-import Link from "next/link";
 import {
   Buildings,
   Bus,
@@ -19,6 +18,7 @@ import {
   TwitterLogo,
   Wheelchair,
 } from "phosphor-react";
+import TrackedLink from "@/components/TrackedLink";
 
 const HIGHLIGHTS = [
   { icon: Buildings, text: "Elmhurst, Queens" },
@@ -133,14 +133,18 @@ export default function Contact() {
 
               {/* CTA Buttons */}
               <div className="flex gap-4">
-                <Link href="/reservations" className="btn-primary btn-cta">
+                <TrackedLink
+                  href="/reservations"
+                  className="btn-primary btn-cta"
+                  label="Contact Reserve Table"
+                >
                   Reserve Table
-                </Link>
+                </TrackedLink>
               </div>
             </div>
 
             {/* Interactive Map */}
-            <div className="rounded-lg overflow-hidden h-96 lg:h-full min-h-96 shadow-lg">
+            <div className="rounded-lg overflow-hidden h-96 lg:h-full min-h-96 border border-black/10">
               <iframe
                 title="Bella Francese location map"
                 src="https://www.google.com/maps?q=90-15%20Queens%20Blvd,%20Elmhurst,%20NY%2011373%20United%20States&output=embed"
@@ -195,7 +199,7 @@ export default function Contact() {
             </div>
 
             {/* Nearby Landmarks */}
-            <div className="bg-white rounded-lg p-8 shadow-lg border border-black/10">
+            <div className="bg-white rounded-lg p-8 border border-black/10">
               <h3 className="text-2xl font-bold mb-6 text-neutral-900 flex items-center gap-3">
                 <MapPinLine size={22} weight="bold" />
                 Nearby Attractions
@@ -300,7 +304,7 @@ export default function Contact() {
         <div className="max-w-2xl mx-auto px-6">
           <h2 className="section-title">Send us a Message</h2>
 
-          <form className="bg-gray-50 p-8 rounded-lg shadow-lg space-y-6">
+          <form className="bg-gray-50 p-8 rounded-lg border border-black/10 space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <input
                 type="text"

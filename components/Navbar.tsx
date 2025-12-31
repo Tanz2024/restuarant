@@ -1,8 +1,8 @@
 ﻿"use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
+import TrackedLink from "@/components/TrackedLink";
 
 type NavItem = { href: string; label: string };
 
@@ -71,18 +71,23 @@ export default function Navbar() {
               <span className="menu-toggle-icon" />
             </button>
 
-            <Link
+            <TrackedLink
               href="/"
               className="text-2xl font-bold tracking-[0.2em] text-neutral-900"
+              label="Nav Home Logo"
             >
               Bella Francese
-            </Link>
+            </TrackedLink>
           </div>
 
           {!hideTopReserve && (
-            <Link href="/reservations" className={reserveButtonClasses}>
+            <TrackedLink
+              href="/reservations"
+              className={reserveButtonClasses}
+              label="Nav Reserve"
+            >
               Reserve
-            </Link>
+            </TrackedLink>
           )}
         </div>
 
@@ -98,12 +103,13 @@ export default function Navbar() {
             <span className="menu-toggle-icon" />
           </button>
 
-          <Link
+          <TrackedLink
             href="/"
             className="text-lg font-bold tracking-[0.2em] text-neutral-900 whitespace-nowrap"
+            label="Nav Home Logo"
           >
             Bella Francese
-          </Link>
+          </TrackedLink>
 
           <span className="ml-auto" />
         </div>
@@ -131,26 +137,28 @@ export default function Navbar() {
                 <p className="menu-section-label">Main</p>
                 <div className="menu-links">
                   {NAV_ITEMS.map((item) => (
-                    <Link
+                    <TrackedLink
                       key={item.href}
                       href={item.href}
                       className="menu-link"
                       onClick={close}
+                      label={`Nav ${item.label}`}
                     >
                       {item.label}
-                    </Link>
+                    </TrackedLink>
                   ))}
 
                   {/* ✅ Prevent duplicate Reserve on desktop:
                       show Reserve inside hamburger ONLY on mobile */}
                   {!hideTopReserve && (
-                    <Link
+                    <TrackedLink
                       href="/reservations"
                       className="menu-link md:hidden"
                       onClick={close}
+                      label="Nav Reserve Mobile"
                     >
                       Reserve
-                    </Link>
+                    </TrackedLink>
                   )}
                 </div>
               </div>
@@ -158,13 +166,14 @@ export default function Navbar() {
               {/* Optional mobile-only CTA button at bottom (remove if you don't want) */}
               {!hideTopReserve && (
                 <div className="md:hidden mt-8">
-                  <Link
+                  <TrackedLink
                     href="/reservations"
                     className="btn-primary w-full text-center"
                     onClick={close}
+                    label="Nav Reserve CTA"
                   >
                     Reserve a Table
-                  </Link>
+                  </TrackedLink>
                 </div>
               )}
             </div>

@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import Link from "next/link";
+import TrackedLink from "@/components/TrackedLink";
 
 function SectionHeading({
   kicker,
@@ -248,9 +248,9 @@ export default function Menu() {
           <p className="text-xl text-gray-600 mb-8">
             Limited seating each evening. Booking recommended.
           </p>
-          <Link href="/reservations" className="btn-primary btn-cta">
+          <TrackedLink href="/reservations" className="btn-primary btn-cta" label="Menu Reserve a Table">
             Reserve a Table
-          </Link>
+          </TrackedLink>
         </div>
       </section>
     </main>

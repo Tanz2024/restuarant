@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import TrackedLink from "@/components/TrackedLink";
 
 export default function Footer() {
   return (
@@ -26,10 +26,10 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-bold mb-4">Quick Links</h4>
             <div className="space-y-2 mb-6">
-              <Link href="/menu" className="block text-white/70 hover:text-white transition">Menu</Link>
-              <Link href="/reservations" className="block text-white/70 hover:text-white transition">Reservations</Link>
-              <Link href="/about" className="block text-white/70 hover:text-white transition">About</Link>
-              <Link href="/contact" className="block text-white/70 hover:text-white transition">Contact</Link>
+              <TrackedLink href="/menu" className="block text-white/70 hover:text-white transition">Menu</TrackedLink>
+              <TrackedLink href="/reservations" className="block text-white/70 hover:text-white transition">Reservations</TrackedLink>
+              <TrackedLink href="/about" className="block text-white/70 hover:text-white transition">About</TrackedLink>
+              <TrackedLink href="/contact" className="block text-white/70 hover:text-white transition">Contact</TrackedLink>
             </div>
             <div className="flex space-x-4">
               <a href="#" className="text-white/70 hover:text-white transition">Instagram</a>

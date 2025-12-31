@@ -1,7 +1,7 @@
 ﻿"use client";
 
-import Link from "next/link";
 import { CookingPot, Leaf, MusicNotes, UserCircle, Wine } from "phosphor-react";
+import TrackedLink from "@/components/TrackedLink";
 
 const PHILOSOPHY = [
   {
@@ -77,7 +77,7 @@ export default function About() {
               </p>
             </div>
 
-            <div className="rounded-2xl overflow-hidden shadow-lg">
+            <div className="rounded-2xl overflow-hidden border border-black/10">
               <img
                 src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80"
                 alt="Signature dishes on the table"
@@ -93,7 +93,7 @@ export default function About() {
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="section-title">The Dining Room</h2>
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="rounded-2xl overflow-hidden shadow-lg">
+            <div className="rounded-2xl overflow-hidden border border-black/10">
               <img
                 src="/luxurious-hotel-bar-lounge.jpg"
                 alt="Interior design of the dining room"
@@ -131,8 +131,7 @@ export default function About() {
               return (
                 <div
                   key={item.title}
-                  className="card-elegant p-8 text-center animate-fade-in-up"
-                  style={{ animationDelay: `${i * 0.1}s` }}
+                  className="card-elegant p-8 text-center"
                 >
                   <span className="icon-badge mb-4">
                     <Icon size={24} weight="bold" />
@@ -180,9 +179,9 @@ export default function About() {
         <p className="text-xl text-white/70 mb-8 max-w-2xl mx-auto">
           Join us and discover why our guests keep coming back for more
         </p>
-        <Link href="/reservations" className="btn-primary btn-cta">
+        <TrackedLink href="/reservations" className="btn-primary btn-cta" label="About Reserve a Table">
           Reserve a Table Today
-        </Link>
+        </TrackedLink>
       </section>
     </main>
   );
