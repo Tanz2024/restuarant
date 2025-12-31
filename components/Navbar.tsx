@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { usePathname } from "next/navigation";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import TrackedLink from "@/components/TrackedLink";
 
 type NavItem = { href: string; label: string };

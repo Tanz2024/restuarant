@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { CalendarCheck, Clock, Compass, MapPin, Star } from "phosphor-react";
+import { CalendarCheck, Clock, MapPin, Star } from "phosphor-react";
 import TrackedLink from "@/components/TrackedLink";
 
 export default function Home() {
@@ -9,6 +9,7 @@ export default function Home() {
     name: "Coq au Vin",
     image: "/Coq au Vin.png",
     alt: "Coq au vin",
+    description: "Burgundy wine, mushrooms, and pearl onions, finished with restraint.",
   };
 
   const supportingDishes = [
@@ -16,16 +17,19 @@ export default function Home() {
       name: "Wild Mushroom Risotto",
       image: "/Wild Mushroom Risotto.png",
       alt: "Wild mushroom risotto",
+      description: "Porcini, aged parmesan, and a restrained touch of truffle.",
     },
     {
       name: "Pappardelle with Ragout",
       image: "/Pappardelle with Ragout.png",
       alt: "Pappardelle with ragout",
+      description: "Fresh ribbon pasta with a slow-simmered ragu.",
     },
     {
       name: "Creme Brulee",
       image: "/Creme brulee.png",
       alt: "Creme brulee",
+      description: "Silky vanilla custard beneath a fine caramelized crust.",
     },
   ];
   const allDishes = [featuredDish, ...supportingDishes];
