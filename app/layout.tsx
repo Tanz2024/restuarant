@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Culinary Haven - Authentic Flavors, Modern Dining",
   description: "Fresh ingredients, handcrafted dishes, and a warm atmosphere in the heart of the city.",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.png",
   },
 };
 

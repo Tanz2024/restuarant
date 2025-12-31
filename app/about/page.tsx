@@ -126,7 +126,7 @@ export default function About() {
           <h2 className="section-title">Our Philosophy</h2>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {PHILOSOPHY.map((item, i) => {
+            {PHILOSOPHY.map((item) => {
               const Icon = item.icon;
               return (
                 <div
